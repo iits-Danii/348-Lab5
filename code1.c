@@ -49,7 +49,10 @@ int main() {
 }
 
 void monthly_sales(float arr[], int size) {
-
+    printf("Month   \tSales\n");
+    for (int index = 0; index < size; index++){
+        printf("%s    \t%.2f\n", months[index], arr[index]);
+    }
 }
 
 void sales_summary(float arr[], int size) {
@@ -60,7 +63,7 @@ void sales_summary(float arr[], int size) {
     float avg = 0;
     float sum = arr[0];
 
-    for (int index = 1; index < size+1; index++) {
+    for (int index = 1; index < size; index++) {
         if (arr[index] > max) {
             max = arr[index];
             fin_max = index;
@@ -71,7 +74,7 @@ void sales_summary(float arr[], int size) {
 
         }
     }
-    for (int index = 1; index < size+1; index++){
+    for (int index = 1; index < size; index++){
         sum += arr[index];
     }
     avg = sum/12;
@@ -82,7 +85,7 @@ void sales_summary(float arr[], int size) {
 }
 
 void moving_average(float arr[], int size) {
-
+    // while ...
 }
 
 void sales_report(float arr[], int size) {
