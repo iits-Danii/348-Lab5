@@ -26,19 +26,19 @@ int main() {
     FILE *file_ptr;
     file_ptr = fopen("in.txt", "r");
 
-    char line[100];
+    float num;
     int index = 0;
 
     if (file_ptr == NULL) {
-        printf("Can't open file");
-        return 0;
+        printf("Can't open file\n");
+        return 1;
     }
 
-    while (fgets(line, sizeof(line), file_ptr) && index < size) {
-
-        sscanf(line, "%f", &sales_figures[index]);
-        index++;
+    for (index = 0; index < 12; index++) {
+        fscanf(file_ptr, "%f", &num);
+        sales_figures[index] = num;
     }
+
     fclose(file_ptr);
 
     monthly_sales(sales_figures, size);
@@ -57,6 +57,8 @@ void sales_summary(float arr[], int size) {
     float min = arr[0];
     int fin_min = 0;
     int fin_max = 0;
+    float avg = 0;
+    float sum = arr[0];
 
     for (int index = 1; index < size+1; index++) {
         if (arr[index] > max) {
@@ -69,7 +71,14 @@ void sales_summary(float arr[], int size) {
 
         }
     }
-    printf("Minimum sales: %f (%c)", min, fin_min);
+    for (int index = 1; index < size+1; index++){
+        sum += arr[index];
+    }
+    avg = sum/12;
+
+    printf("Minimum sales: %.2f (%s)\n", min, months[fin_min]);
+    printf("Maximum sales: %.2f (%s)\n", max, months[fin_max]);
+    printf("Average sales: %.2f\n", avg);
 }
 
 void moving_average(float arr[], int size) {
