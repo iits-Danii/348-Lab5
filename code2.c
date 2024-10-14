@@ -41,7 +41,7 @@ int main() {
         }
     } else if (option == 2) {
         if (dim_check_m(SIZE, SIZE, SIZE, SIZE) == 1) {
-            add(m1, m2);
+            mult(m1, m2);
         } else {
             return 0;
         }
@@ -55,9 +55,9 @@ int main() {
 }
 
 void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
-    int m3[SIZE][SIZE];
+    int m3[SIZE][SIZE] = {0};
     for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
             m3[i][j] = m1[i][j] + m2[i][j];
         }
     }
@@ -72,7 +72,7 @@ void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
 }
 
 void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
-    int m3[SIZE][SIZE];
+    int m3[SIZE][SIZE] = {0};
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             for (int k = 0; k < SIZE; k++) {
