@@ -32,29 +32,35 @@ int main() {
     scanf("%d", &option);
 
     if (option == 1) {
-
+        add(m1, m2);
+    } else if (option == 2) {
+        mult(m1, m2);
+    } else if (option ==3) {
+        transpose(m1, m2);
+    } else if (option == 4) {
+        print(m1, m2);
     }
 }
 
 void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
-    int m3;
+    int m3[SIZE][SIZE];
 
 }
 
 void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
-    int m3;
+    int m3[SIZE][SIZE];
 
 }
 
 void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
         int option;
-    printf("Which matrix would you like to transpose?: ");
+    printf("Which matrix would you like to transpose? (1-Matrix 1, Any Integer-Matrix 2): ");
     scanf("%d", &option);
     if (option == 1) {
         for (int i = 0; i < SIZE; i++) {
             printf("\n");
             for (int j = 0; j < SIZE; j++) {
-                printf("%d\t", m1[i][j]);
+                printf("%d\t", m1[j][i]);
             }
         }
     } else {
@@ -70,7 +76,7 @@ void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
 
 void print(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
     int option;
-    printf("Which matrix would you like to print?: ");
+    printf("Which matrix would you like to print? (1-Matrix 1, Any Integer-Matrix 2): ");
     scanf("%d", &option);
     if (option == 1) {
         for (int i = 0; i < SIZE; i++) {
