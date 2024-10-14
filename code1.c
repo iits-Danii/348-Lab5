@@ -51,7 +51,7 @@ int main() {
 void monthly_sales(float arr[], int size) {
     printf("Month   \tSales\n");
     for (int index = 0; index < size; index++){
-        printf("%s    \t%.2f\n", months[index], arr[index]);
+        printf("%s      \t%.2f\n", months[index], arr[index]);
     }
 }
 
@@ -79,15 +79,53 @@ void sales_summary(float arr[], int size) {
     }
     avg = sum/12;
 
+    printf("\nSales summary report:\n");
     printf("Minimum sales: %.2f (%s)\n", min, months[fin_min]);
     printf("Maximum sales: %.2f (%s)\n", max, months[fin_max]);
     printf("Average sales: %.2f\n", avg);
 }
 
 void moving_average(float arr[], int size) {
-    // while ...
+    printf("\nSix-Month moving average report:\n");
+    
+    //starting point for each possible iteration of 6 month period
+    for (int i = 0; i <= size - 6; i++) {
+        float sum = 0;
+        
+        //Gets the sum for a 6 month period
+        for (int j = i; j < i + 6; j++) {
+            sum += arr[j];
+        }
+
+        float avg = sum/6;
+        printf("%s-%s: %.2f\n", months[i], months[i+5], avg);
+    }
 }
 
 void sales_report(float arr[], int size) {
+    float swap_sales;
+    char temp_month[20];
 
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - 1 - i; j++) {
+            if (arr[j] < arr[j+1]) {
+
+                swap_sales = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = swap_sales;
+
+                for (int k = 0; k < 20; k++) {
+                    temp_month[k] = months[j][k];
+                    months[j][k] = months[j + 1][k];
+                    months[j + 1][k] = temp_month[k];
+                }
+            }
+        }
+    }
+
+    printf("\nMonthly sales report (highest to lowest):\n");
+    printf("Month   \tSales\n");
+    for (int index = 0; index < size; index++) {
+        printf("%s      \t%.2f\n", months[index], arr[index]);
+    }
 }
