@@ -6,7 +6,10 @@
 #define SIZE 5
 
 //function inits
-
+void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]);
+void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]);
+void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]);
+void print(int m1[SIZE][SIZE],int m2[SIZE][SIZE]);
 
 int main() {
     int option = 0;
@@ -33,33 +36,56 @@ int main() {
     }
 }
 
-void add(m1, m2) {
+void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
+    int m3;
 
 }
 
-void mult(m1, m2) {
+void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
+    int m3;
 
 }
 
-void transpose(m1, m2) {
+void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
         int option;
     printf("Which matrix would you like to transpose?: ");
-    scanf("%d", option);
+    scanf("%d", &option);
     if (option == 1) {
-        return; //temp
+        for (int i = 0; i < SIZE; i++) {
+            printf("\n");
+            for (int j = 0; j < SIZE; j++) {
+                printf("%d\t", m1[i][j]);
+            }
+        }
     } else {
-        return; //temp
+        for (int i = 0; i < SIZE; i++) {
+            printf("\n");
+            for (int j = 0; j < SIZE; j++) {
+                printf("%d\t", m2[j][i]);
+            }
+        }
     }
+
 }
 
-void print(m1, m2) {
+void print(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
     int option;
     printf("Which matrix would you like to print?: ");
-    scanf("%d", option);
+    scanf("%d", &option);
     if (option == 1) {
-        return; //temp
+        for (int i = 0; i < SIZE; i++) {
+            printf("\n");
+            for (int j = 0; j < SIZE; j++) {
+                printf("%d\t", m1[i][j]);
+            }
+        }
     } else {
-        return; //temp
+        for (int i = 0; i < SIZE; i++) {
+            printf("\n");
+            for (int j = 0; j < SIZE; j++) {
+                printf("%d\t", m2[i][j]);
+            }
+        }
     }
 
 }
