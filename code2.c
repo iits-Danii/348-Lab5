@@ -30,16 +30,20 @@ int main() {
         {10, 9, 8, 7, 6},
         {5, 4, 3, 2, 1}
     };
+
+    //allows the user to choose what they would like to do with the matrices
     printf("What would you like to do? (1-add, 2-multiply, 3-transpose, 4-print): ");
     scanf("%d", &option);
 
     if (option == 1) {
+        //checks dimensions for add before running add function
         if (dim_check_a(SIZE, SIZE, SIZE, SIZE) == 1) {
             add(m1, m2);
         } else {
             return 0;
         }
     } else if (option == 2) {
+        //checks dimensions for mult before running mult function
         if (dim_check_m(SIZE, SIZE, SIZE, SIZE) == 1) {
             mult(m1, m2);
         } else {
@@ -49,6 +53,7 @@ int main() {
         transpose(m1, m2);
     } else if (option == 4) {
         print(m1, m2);
+    //error checking    
     } else {
         printf("Invalid input.");
     }
@@ -56,12 +61,14 @@ int main() {
 
 void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
     int m3[SIZE][SIZE] = {0};
+    //searches through every row and column, adds them together and assigns them to the same place on m3
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             m3[i][j] = m1[i][j] + m2[i][j];
         }
     }
     printf("The matrix after addition:\n");
+    //nearly identical method of printing from print function
     for (int i = 0; i < SIZE; i++) {
             printf("\n");
             for (int j = 0; j < SIZE; j++) {
@@ -73,6 +80,7 @@ void add(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
 
 void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
     int m3[SIZE][SIZE] = {0};
+    //iterate over each row and column before performing product of i row of m1 and j column of m2
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             for (int k = 0; k < SIZE; k++) {
@@ -81,6 +89,7 @@ void mult(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
         }
     }
     printf("The matrix after multiplication:\n");
+    //nearly identical method of printing from print function
     for (int i = 0; i < SIZE; i++) {
             printf("\n");
             for (int j = 0; j < SIZE; j++) {
@@ -94,6 +103,7 @@ void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
     printf("Which matrix would you like to transpose? (1-Matrix 1, Any Integer-Matrix 2): ");
     scanf("%d", &option);
     if (option == 1) {
+        //nearly identical method of printing from print function swapping rows and columns
         for (int i = 0; i < SIZE; i++) {
             printf("\n");
             for (int j = 0; j < SIZE; j++) {
@@ -101,6 +111,7 @@ void transpose(int m1[SIZE][SIZE],int m2[SIZE][SIZE]) {
             }
         }
     } else {
+        //nearly identical method of printing from print function swapping rows and columns
         for (int i = 0; i < SIZE; i++) {
             printf("\n");
             for (int j = 0; j < SIZE; j++) {
