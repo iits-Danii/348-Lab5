@@ -29,11 +29,13 @@ int main() {
     float num;
     int index = 0;
 
+    //error checking
     if (file_ptr == NULL) {
         printf("Can't open file\n");
         return 1;
     }
 
+    //gathers data from in.txt to store in sales figures array
     for (index = 0; index < 12; index++) {
         fscanf(file_ptr, "%f", &num);
         sales_figures[index] = num;
@@ -41,6 +43,7 @@ int main() {
 
     fclose(file_ptr);
 
+    //calls all necessary functions
     monthly_sales(sales_figures, size);
     sales_summary(sales_figures, size);
     moving_average(sales_figures, size);
@@ -63,6 +66,7 @@ void sales_summary(float arr[], int size) {
     float avg = 0;
     float sum = arr[0];
 
+    //for loop and if statements determine minimum sales values and their index
     for (int index = 1; index < size; index++) {
         if (arr[index] > max) {
             max = arr[index];
@@ -106,6 +110,7 @@ void sales_report(float arr[], int size) {
     float swap_sales;
     char temp_month[20];
 
+    //bubble sort algorithm
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - 1 - i; j++) {
             if (arr[j] < arr[j+1]) {
@@ -114,6 +119,7 @@ void sales_report(float arr[], int size) {
                 arr[j] = arr[j+1];
                 arr[j+1] = swap_sales;
 
+                //swaps months to correspond with sales values
                 for (int k = 0; k < 20; k++) {
                     temp_month[k] = months[j][k];
                     months[j][k] = months[j + 1][k];
